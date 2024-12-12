@@ -27,6 +27,7 @@ TaskList.propTypes = {
       isComplete: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  onComplete: PropTypes.func.isRequired,
 };
 
 export default TaskList;
