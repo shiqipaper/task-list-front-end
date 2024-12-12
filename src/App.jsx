@@ -30,9 +30,9 @@ const App = () => {
 
   const handleDeleteTask = (id) => {
     setTaskData(taskData => taskData.filter(task => {
-      task.id !== id 
-    }))
-  }
+      return task.id !== id;
+    }));
+  };
 
   return (
     <div className="App">
