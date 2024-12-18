@@ -2,6 +2,7 @@ import TaskList from './components/TaskList.jsx';
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import NewTaskForm from './components/NewTaskForm.jsx';
 
 // const TASKS = [
 //   {
@@ -16,7 +17,7 @@ import axios from 'axios';
 //   },
 // ];
 
-const kBaseUrl = 'http://localhost:5000';
+const kBaseUrl = 'http://127.0.0.1:5000';
 
 const taskApiToJson = task => {
   const { description, id, is_complete: isComplete, title } = task;
@@ -123,6 +124,7 @@ const App = () => {
           />
         </div>
       </main>
+      <NewTaskForm />
     </div>
   );
 };
