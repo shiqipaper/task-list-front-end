@@ -21,10 +21,10 @@ const NewTaskForm = ({ handleSubmit }) => {
 
   return (
     <form onSubmit={onHandleSubmit}>
-      <label htmlFor="name">Task: </label>
+      <label htmlFor="taskName">Task: </label>
       <input
         type="text"
-        id="name"
+        id="taskName"
         name="name"
         value={task}
         onChange={handleTaskChange}/>

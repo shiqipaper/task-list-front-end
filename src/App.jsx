@@ -112,7 +112,8 @@ const App = () => {
   const handleSubmit = (data) => {
     axios.post(`${kBaseUrl}/tasks`, data)
       .then((result) => {
-        setTasks((prevTasks) => [taskApiToJson(result.data), ...prevTasks]);
+        console.log('Response from server:', result.data);
+        setTasks((prevTasks) => [taskApiToJson(result.data.task), ...prevTasks]);
       }).catch((error) => console.log(error));
   };
 
