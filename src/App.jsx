@@ -109,6 +109,12 @@ const App = () => {
       });
   };
 
+  const handleSubmit = (data) => {
+    axios.post(`${kBaseUrl}/tasks`, data)
+      .then((result) => {
+        setTasks((prevTasks) => [taskApiToJson(result.data), ...prevTasks]);
+      }).catch((error) => console.log(error));
+  };
 
   return (
     <div className="App">
@@ -124,7 +130,7 @@ const App = () => {
           />
         </div>
       </main>
-      <NewTaskForm />
+      <NewTaskForm handleSubmit={handleSubmit} />
     </div>
   );
 };
