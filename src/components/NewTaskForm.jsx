@@ -12,7 +12,7 @@ const NewTaskForm = ({ handleSubmit }) => {
     event.preventDefault();
     const newTask = {
       title: task,
-      description: task,
+      description: '',
       isComplete: false
     };
     handleSubmit(newTask);
@@ -21,10 +21,10 @@ const NewTaskForm = ({ handleSubmit }) => {
 
   return (
     <form onSubmit={onHandleSubmit}>
-      <label htmlFor="taskName">Task: </label>
+      <label htmlFor="name">Task: </label>
       <input
         type="text"
-        id="taskName"
+        id="name"
         name="name"
         value={task}
         onChange={handleTaskChange}/>
