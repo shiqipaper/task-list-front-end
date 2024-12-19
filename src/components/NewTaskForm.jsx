@@ -2,32 +2,40 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const NewTaskForm = ({ handleSubmit }) => {
-  const [task, setTask] = useState('');
+  const kDefaultFormState = {
+    title: '',
+    description: '',
+    isComplete: false
+  };
 
-  const handleTaskChange = (event) => {
-    setTask(event.target.value);
+  const [formData, setFormData] = useState(kDefaultFormState);
+
+  const handleChange = (event) => {
+    const fieldName = event.target.name;
+    const fieldValue = event.target.value;
+    const newFormData = {...formData, [fieldName] : fieldValue};
+    setFormData(newFormData);
   };
 
   const onHandleSubmit = (event) => {
     event.preventDefault();
-    const newTask = {
-      title: task,
-      description: '',
-      isComplete: false
-    };
-    handleSubmit(newTask);
-    setTask('');
+    handleSubmit(formData);
+    setFormData(kDefaultFormState);
   };
 
   return (
     <form onSubmit={onHandleSubmit}>
-      <label htmlFor="taskName">Task: </label>
-      <input
-        type="text"
-        id="taskName"
-        name="name"
-        value={task}
-        onChange={handleTaskChange}/>
+
+      <div>
+        <label htmlFor="taskName">Task: </label>
+        <input type="text" id="taskName" name="title" value={formData.title} onChange={handleChange}/>
+      </div>
+
+      <div>
+        <label htmlFor="description">Description: </label>
+        <input type="text" id="description" name="description" value={formData.description} onChange={handleChange}/>
+      </div>
+
       <div>
         <input type="submit" value="Add a task" />
       </div>
